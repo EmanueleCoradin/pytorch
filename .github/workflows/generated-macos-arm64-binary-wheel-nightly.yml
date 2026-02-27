@@ -36,7 +36,7 @@ jobs:
     runs-on: macos-14-xlarge
     timeout-minutes: 240
     env:
-      PYTORCH_ROOT: ${{ github.workspace }}/pytorch
+      PYTORCH_ROOT: ${{ github.workspace }}
       PACKAGE_TYPE: wheel
       # TODO: This is a legacy variable that we eventually want to get rid of in
       #       favor of GPU_ARCH_VERSION
@@ -67,13 +67,11 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: recursive
-          path: pytorch
           show-progress: false
       - name: Clean PyTorch checkout
         run: |
           # Remove any artifacts from the previous checkouts
           git clean -fxd
-        working-directory: pytorch
       - name: Populate binary env
         run: |
           "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
@@ -148,7 +146,7 @@ jobs:
     runs-on: macos-14-xlarge
     timeout-minutes: 240
     env:
-      PYTORCH_ROOT: ${{ github.workspace }}/pytorch
+      PYTORCH_ROOT: ${{ github.workspace }}
       PACKAGE_TYPE: wheel
       # TODO: This is a legacy variable that we eventually want to get rid of in
       #       favor of GPU_ARCH_VERSION
@@ -179,13 +177,11 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: recursive
-          path: pytorch
           show-progress: false
       - name: Clean PyTorch checkout
         run: |
           # Remove any artifacts from the previous checkouts
           git clean -fxd
-        working-directory: pytorch
       - name: Populate binary env
         run: |
           "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
@@ -260,7 +256,7 @@ jobs:
     runs-on: macos-14-xlarge
     timeout-minutes: 240
     env:
-      PYTORCH_ROOT: ${{ github.workspace }}/pytorch
+      PYTORCH_ROOT: ${{ github.workspace }}
       PACKAGE_TYPE: wheel
       # TODO: This is a legacy variable that we eventually want to get rid of in
       #       favor of GPU_ARCH_VERSION
@@ -291,13 +287,11 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: recursive
-          path: pytorch
           show-progress: false
       - name: Clean PyTorch checkout
         run: |
           # Remove any artifacts from the previous checkouts
           git clean -fxd
-        working-directory: pytorch
       - name: Populate binary env
         run: |
           "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
@@ -372,7 +366,7 @@ jobs:
     runs-on: macos-14-xlarge
     timeout-minutes: 240
     env:
-      PYTORCH_ROOT: ${{ github.workspace }}/pytorch
+      PYTORCH_ROOT: ${{ github.workspace }}
       PACKAGE_TYPE: wheel
       # TODO: This is a legacy variable that we eventually want to get rid of in
       #       favor of GPU_ARCH_VERSION
@@ -403,13 +397,11 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: recursive
-          path: pytorch
           show-progress: false
       - name: Clean PyTorch checkout
         run: |
           # Remove any artifacts from the previous checkouts
           git clean -fxd
-        working-directory: pytorch
       - name: Populate binary env
         run: |
           "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
@@ -484,7 +476,7 @@ jobs:
     runs-on: macos-14-xlarge
     timeout-minutes: 240
     env:
-      PYTORCH_ROOT: ${{ github.workspace }}/pytorch
+      PYTORCH_ROOT: ${{ github.workspace }}
       PACKAGE_TYPE: wheel
       # TODO: This is a legacy variable that we eventually want to get rid of in
       #       favor of GPU_ARCH_VERSION
@@ -515,13 +507,11 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: recursive
-          path: pytorch
           show-progress: false
       - name: Clean PyTorch checkout
         run: |
           # Remove any artifacts from the previous checkouts
           git clean -fxd
-        working-directory: pytorch
       - name: Populate binary env
         run: |
           "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
@@ -596,7 +586,7 @@ jobs:
     runs-on: macos-14-xlarge
     timeout-minutes: 240
     env:
-      PYTORCH_ROOT: ${{ github.workspace }}/pytorch
+      PYTORCH_ROOT: ${{ github.workspace }}
       PACKAGE_TYPE: wheel
       # TODO: This is a legacy variable that we eventually want to get rid of in
       #       favor of GPU_ARCH_VERSION
@@ -627,13 +617,11 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: recursive
-          path: pytorch
           show-progress: false
       - name: Clean PyTorch checkout
         run: |
           # Remove any artifacts from the previous checkouts
           git clean -fxd
-        working-directory: pytorch
       - name: Populate binary env
         run: |
           "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
@@ -708,7 +696,7 @@ jobs:
     runs-on: macos-14-xlarge
     timeout-minutes: 240
     env:
-      PYTORCH_ROOT: ${{ github.workspace }}/pytorch
+      PYTORCH_ROOT: ${{ github.workspace }}
       PACKAGE_TYPE: wheel
       # TODO: This is a legacy variable that we eventually want to get rid of in
       #       favor of GPU_ARCH_VERSION
@@ -739,13 +727,11 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: recursive
-          path: pytorch
           show-progress: false
       - name: Clean PyTorch checkout
         run: |
           # Remove any artifacts from the previous checkouts
           git clean -fxd
-        working-directory: pytorch
       - name: Populate binary env
         run: |
           "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
@@ -829,7 +815,6 @@ jobs:
         with:
           ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
           sparse-checkout: .ci/libtorch/
-          path: pytorch
           show-progress: false
       - name: Setup Python
         uses: actions/setup-python@v6
@@ -846,7 +831,7 @@ jobs:
         run: |
           set -eux
           mkdir -p "${{ runner.temp }}/libtorch_output"
-          python3 pytorch/.ci/libtorch/extract_libtorch_from_wheel.py \
+          python3 .ci/libtorch/extract_libtorch_from_wheel.py \
             --wheel-dir "${{ runner.temp }}/wheel_artifact" \
             --output-dir "${{ runner.temp }}/libtorch_output" \
             --platform macos \
