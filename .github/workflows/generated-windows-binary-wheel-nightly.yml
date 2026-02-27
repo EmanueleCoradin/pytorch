@@ -122,11 +122,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Build PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_build.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_build.sh"
       - uses: actions/upload-artifact@v4.4.0
         if: always()
         with:
@@ -233,11 +233,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Test PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_test.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_test.sh"
       - name: Wait until all sessions have drained
         shell: powershell
         if: always()
@@ -351,11 +351,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Build PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_build.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_build.sh"
       - uses: actions/upload-artifact@v4.4.0
         if: always()
         with:
@@ -463,11 +463,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Test PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_test.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_test.sh"
       - name: Wait until all sessions have drained
         shell: powershell
         if: always()
@@ -582,11 +582,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Build PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_build.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_build.sh"
       - uses: actions/upload-artifact@v4.4.0
         if: always()
         with:
@@ -694,11 +694,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Test PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_test.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_test.sh"
       - name: Wait until all sessions have drained
         shell: powershell
         if: always()
@@ -813,11 +813,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Build PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_build.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_build.sh"
       - uses: actions/upload-artifact@v4.4.0
         if: always()
         with:
@@ -925,11 +925,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Test PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_test.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_test.sh"
       - name: Wait until all sessions have drained
         shell: powershell
         if: always()
@@ -1044,11 +1044,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Build PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_build.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_build.sh"
       - uses: actions/upload-artifact@v4.4.0
         if: always()
         with:
@@ -1155,11 +1155,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Test PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_test.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_test.sh"
       - name: Wait until all sessions have drained
         shell: powershell
         if: always()
@@ -1272,11 +1272,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Build PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_build.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_build.sh"
       - uses: actions/upload-artifact@v4.4.0
         if: always()
         with:
@@ -1383,11 +1383,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Test PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_test.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_test.sh"
       - name: Wait until all sessions have drained
         shell: powershell
         if: always()
@@ -1501,11 +1501,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Build PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_build.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_build.sh"
       - uses: actions/upload-artifact@v4.4.0
         if: always()
         with:
@@ -1613,11 +1613,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Test PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_test.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_test.sh"
       - name: Wait until all sessions have drained
         shell: powershell
         if: always()
@@ -1732,11 +1732,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Build PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_build.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_build.sh"
       - uses: actions/upload-artifact@v4.4.0
         if: always()
         with:
@@ -1844,11 +1844,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Test PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_test.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_test.sh"
       - name: Wait until all sessions have drained
         shell: powershell
         if: always()
@@ -1963,11 +1963,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Build PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_build.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_build.sh"
       - uses: actions/upload-artifact@v4.4.0
         if: always()
         with:
@@ -2075,11 +2075,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Test PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_test.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_test.sh"
       - name: Wait until all sessions have drained
         shell: powershell
         if: always()
@@ -2194,11 +2194,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Build PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_build.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_build.sh"
       - uses: actions/upload-artifact@v4.4.0
         if: always()
         with:
@@ -2305,11 +2305,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Test PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_test.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_test.sh"
       - name: Wait until all sessions have drained
         shell: powershell
         if: always()
@@ -2422,11 +2422,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Build PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_build.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_build.sh"
       - uses: actions/upload-artifact@v4.4.0
         if: always()
         with:
@@ -2533,11 +2533,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Test PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_test.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_test.sh"
       - name: Wait until all sessions have drained
         shell: powershell
         if: always()
@@ -2651,11 +2651,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Build PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_build.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_build.sh"
       - uses: actions/upload-artifact@v4.4.0
         if: always()
         with:
@@ -2763,11 +2763,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Test PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_test.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_test.sh"
       - name: Wait until all sessions have drained
         shell: powershell
         if: always()
@@ -2882,11 +2882,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Build PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_build.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_build.sh"
       - uses: actions/upload-artifact@v4.4.0
         if: always()
         with:
@@ -2994,11 +2994,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Test PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_test.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_test.sh"
       - name: Wait until all sessions have drained
         shell: powershell
         if: always()
@@ -3113,11 +3113,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Build PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_build.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_build.sh"
       - uses: actions/upload-artifact@v4.4.0
         if: always()
         with:
@@ -3225,11 +3225,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Test PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_test.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_test.sh"
       - name: Wait until all sessions have drained
         shell: powershell
         if: always()
@@ -3344,11 +3344,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Build PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_build.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_build.sh"
       - uses: actions/upload-artifact@v4.4.0
         if: always()
         with:
@@ -3455,11 +3455,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Test PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_test.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_test.sh"
       - name: Wait until all sessions have drained
         shell: powershell
         if: always()
@@ -3572,11 +3572,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Build PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_build.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_build.sh"
       - uses: actions/upload-artifact@v4.4.0
         if: always()
         with:
@@ -3683,11 +3683,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Test PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_test.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_test.sh"
       - name: Wait until all sessions have drained
         shell: powershell
         if: always()
@@ -3801,11 +3801,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Build PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_build.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_build.sh"
       - uses: actions/upload-artifact@v4.4.0
         if: always()
         with:
@@ -3913,11 +3913,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Test PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_test.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_test.sh"
       - name: Wait until all sessions have drained
         shell: powershell
         if: always()
@@ -4032,11 +4032,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Build PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_build.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_build.sh"
       - uses: actions/upload-artifact@v4.4.0
         if: always()
         with:
@@ -4144,11 +4144,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Test PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_test.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_test.sh"
       - name: Wait until all sessions have drained
         shell: powershell
         if: always()
@@ -4263,11 +4263,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Build PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_build.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_build.sh"
       - uses: actions/upload-artifact@v4.4.0
         if: always()
         with:
@@ -4375,11 +4375,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Test PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_test.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_test.sh"
       - name: Wait until all sessions have drained
         shell: powershell
         if: always()
@@ -4494,11 +4494,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Build PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_build.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_build.sh"
       - uses: actions/upload-artifact@v4.4.0
         if: always()
         with:
@@ -4605,11 +4605,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Test PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_test.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_test.sh"
       - name: Wait until all sessions have drained
         shell: powershell
         if: always()
@@ -4722,11 +4722,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Build PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_build.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_build.sh"
       - uses: actions/upload-artifact@v4.4.0
         if: always()
         with:
@@ -4833,11 +4833,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Test PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_test.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_test.sh"
       - name: Wait until all sessions have drained
         shell: powershell
         if: always()
@@ -4951,11 +4951,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Build PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_build.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_build.sh"
       - uses: actions/upload-artifact@v4.4.0
         if: always()
         with:
@@ -5063,11 +5063,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Test PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_test.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_test.sh"
       - name: Wait until all sessions have drained
         shell: powershell
         if: always()
@@ -5182,11 +5182,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Build PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_build.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_build.sh"
       - uses: actions/upload-artifact@v4.4.0
         if: always()
         with:
@@ -5294,11 +5294,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Test PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_test.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_test.sh"
       - name: Wait until all sessions have drained
         shell: powershell
         if: always()
@@ -5413,11 +5413,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Build PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_build.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_build.sh"
       - uses: actions/upload-artifact@v4.4.0
         if: always()
         with:
@@ -5525,11 +5525,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Test PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_test.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_test.sh"
       - name: Wait until all sessions have drained
         shell: powershell
         if: always()
@@ -5644,11 +5644,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Build PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_build.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_build.sh"
       - uses: actions/upload-artifact@v4.4.0
         if: always()
         with:
@@ -5755,11 +5755,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Test PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_test.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_test.sh"
       - name: Wait until all sessions have drained
         shell: powershell
         if: always()
@@ -5872,11 +5872,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Build PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_build.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_build.sh"
       - uses: actions/upload-artifact@v4.4.0
         if: always()
         with:
@@ -5983,11 +5983,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Test PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_test.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_test.sh"
       - name: Wait until all sessions have drained
         shell: powershell
         if: always()
@@ -6101,11 +6101,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Build PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_build.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_build.sh"
       - uses: actions/upload-artifact@v4.4.0
         if: always()
         with:
@@ -6213,11 +6213,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Test PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_test.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_test.sh"
       - name: Wait until all sessions have drained
         shell: powershell
         if: always()
@@ -6332,11 +6332,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Build PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_build.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_build.sh"
       - uses: actions/upload-artifact@v4.4.0
         if: always()
         with:
@@ -6444,11 +6444,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Test PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_test.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_test.sh"
       - name: Wait until all sessions have drained
         shell: powershell
         if: always()
@@ -6563,11 +6563,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Build PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_build.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_build.sh"
       - uses: actions/upload-artifact@v4.4.0
         if: always()
         with:
@@ -6675,11 +6675,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Test PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_test.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_test.sh"
       - name: Wait until all sessions have drained
         shell: powershell
         if: always()
@@ -6794,11 +6794,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Build PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_build.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_build.sh"
       - uses: actions/upload-artifact@v4.4.0
         if: always()
         with:
@@ -6905,11 +6905,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Test PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_test.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_test.sh"
       - name: Wait until all sessions have drained
         shell: powershell
         if: always()
@@ -7022,11 +7022,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Build PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_build.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_build.sh"
       - uses: actions/upload-artifact@v4.4.0
         if: always()
         with:
@@ -7133,11 +7133,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Test PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_test.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_test.sh"
       - name: Wait until all sessions have drained
         shell: powershell
         if: always()
@@ -7251,11 +7251,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Build PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_build.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_build.sh"
       - uses: actions/upload-artifact@v4.4.0
         if: always()
         with:
@@ -7363,11 +7363,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Test PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_test.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_test.sh"
       - name: Wait until all sessions have drained
         shell: powershell
         if: always()
@@ -7482,11 +7482,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Build PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_build.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_build.sh"
       - uses: actions/upload-artifact@v4.4.0
         if: always()
         with:
@@ -7594,11 +7594,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Test PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_test.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_test.sh"
       - name: Wait until all sessions have drained
         shell: powershell
         if: always()
@@ -7713,11 +7713,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Build PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_build.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_build.sh"
       - uses: actions/upload-artifact@v4.4.0
         if: always()
         with:
@@ -7825,11 +7825,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Test PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_test.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_test.sh"
       - name: Wait until all sessions have drained
         shell: powershell
         if: always()
@@ -7944,11 +7944,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Build PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_build.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_build.sh"
       - uses: actions/upload-artifact@v4.4.0
         if: always()
         with:
@@ -8055,11 +8055,11 @@ jobs:
       - name: Populate binary env
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_populate_env.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_populate_env.sh"
       - name: Test PyTorch binary
         shell: bash
         run: |
-          "${PYTORCH_ROOT}/.circleci/scripts/binary_windows_test.sh"
+          "${PYTORCH_ROOT}/.ci/pytorch/binary_windows_test.sh"
       - name: Wait until all sessions have drained
         shell: powershell
         if: always()
