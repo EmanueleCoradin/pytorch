@@ -8,26 +8,7 @@ on:
 
 jobs:
   claude-code:
-    # Early exit conditions (fast gate — avoids spinning up a runner for unauthorized users):
-    # 1. Must be pytorch org
-    # 2. Must mention @claude
-    # 3. Must be org member/collaborator OR an allowed bot
-    # Note: issue_comment and pull_request_review_comment share the same payload paths
-    if: |
-      github.repository_owner == 'pytorch' &&
-      (
-        (github.event_name != 'issues' &&
-         contains(github.event.comment.body, '@claude') &&
-         (contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'), github.event.comment.author_association) ||
-          github.actor == 'pytorch-auto-revert[bot]')) ||
-        (github.event_name == 'issues' &&
-         contains(github.event.issue.body, '@claude') &&
-         (contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'), github.event.issue.author_association) ||
-          github.actor == 'pytorch-auto-revert[bot]'))
-      )
-    runs-on: ubuntu-latest
-    timeout-minutes: 60
-    environment: bedrock
+    uses: pytorch/test-infra/.github/workflows/_claude-code.yml@main
     permissions:
       contents: read
       pull-requests: write
@@ -84,3 +65,6 @@ jobs:
       - name: Upload usage metrics
         if: always()
         uses: pytorch/test-infra/.github/actions/upload-claude-usage@release/2.11
+    secrets: inherit
+    with:
+      additional_claude_args: '--allowedTools Skill'
