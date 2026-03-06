@@ -34,6 +34,13 @@ TORCH_CUDA_CPP_API MempoolId_t graph_pool_handle();
 struct CUDAGraph;
 
 TORCH_CUDA_CPP_API CUDAGraph* get_graph_from_capture_id(CaptureId_t capture_id);
+// Returns true if any CUDAGraph capture is currently active in this process.
+// Used by ProcessGroupNCCL's watchdog to avoid calling hipEventQuery during
+// active capture on pre-7.2 HIP runtimes, where doing so poisons the session.
+// Not needed on CUDA/NVIDIA where hipEventQuery does not have this restriction.
+#if defined(USE_ROCM)
+TORCH_CUDA_CPP_API bool is_graph_capture_active();
+#endif
 
 struct TORCH_CUDA_CPP_API CUDAGraph {
   CUDAGraph(bool keep_graph=false);
