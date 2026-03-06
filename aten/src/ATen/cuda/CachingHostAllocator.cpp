@@ -3,6 +3,7 @@
 #include <ATen/cuda/CUDAEvent.h>
 #include <c10/core/thread_pool.h>
 #include <c10/cuda/CUDAAllocatorConfig.h>
+#include <c10/cuda/CUDAGraphsC10Utils.h>
 
 #include <cuda_runtime_api.h>
 #include <future>
@@ -277,8 +278,31 @@ struct CUDACachingHostAllocatorImpl
     }
 
     // Register the mapped pages using cudaHostRegister
-    AT_CUDA_CHECK(
-        cudaHostRegister(*ptr, roundSize, cudaHostRegisterDefault));
+    if (current_stream_is_capturing_fast_path()) {
+      at::cuda::CUDAStreamCaptureModeGuard g{cudaStreamCaptureModeRelaxed};
+      AT_CUDA_CHECK(cudaHostRegister(*ptr, roundSize, cudaHostRegisterDefault));
+    } else {
+      AT_CUDA_CHECK(cudaHostRegister(*ptr, roundSize, cudaHostRegisterDefault));
+    }
+  }
+
+  CUDAStream get_current_stream() const override {
+    // get_current_stream() is called in contexts (such as allocation)
+    // where a device may not already be set. Set it before
+    // continuing.
+    at::OptionalDeviceGuard device_guard;
+    auto primary_ctx_device_index =
+        c10::cuda::getDeviceIndexWithPrimaryContext();
+    if (primary_ctx_device_index.has_value()) {
+      device_guard.reset_device(
+          at::Device(at::DeviceType::CUDA, *primary_ctx_device_index));
+    }
+    return at::cuda::getCurrentCUDAStream();
+  }
+
+  bool stream_is_capturing(CUDAStream s) const override {
+    return c10::cuda::isStreamCapturingMayInitCtx(
+        static_cast<cudaStream_t>(s));
   }
 };
 
