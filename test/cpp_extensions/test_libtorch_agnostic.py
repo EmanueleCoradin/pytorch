@@ -1798,11 +1798,11 @@ except RuntimeError as e:
             curr_mem = torch.cuda.memory_allocated(device)
             self.assertEqual(curr_mem, init_mem)
 
-    @skipIfTorchVersionLessThan(2, 12)
+    @skipIfTorchVersionLessThan(2, 11)
     @skipIfTorchDynamo("no data pointer defined for FakeTensor, FunctionalTensor")
     def test_my_from_blob_with_lambda_deleter(self, device):
-        """Test for from_blob with capturing-lambda deleter (2.12 feature)."""
-        import libtorch_agn_2_12 as libtorch_agnostic
+        """Test for from_blob with capturing-lambda deleter (2.11 feature)."""
+        import libtorch_agn_2_11 as libtorch_agnostic
 
         from_blob_fn = libtorch_agnostic.ops.my_from_blob_with_lambda_deleter
         get_count = libtorch_agnostic.ops.get_lambda_deleter_call_count
