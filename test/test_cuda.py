@@ -2237,6 +2237,11 @@ torch.cuda.synchronize()
     )
     def test_graph_rng_after_failed_capture(self):
         """Test that a stream can be captured again for RNG after a failed capture."""
+        torch.cuda.synchronize()
+        gc.collect()
+        torch.cuda.empty_cache()
+        baseline = torch.cuda.memory_stats()["active.all.current"]
+
         stream = torch.cuda.Stream()
         graph = torch.cuda.CUDAGraph()
         x = torch.ones(1, device="cuda")
@@ -2253,6 +2258,7 @@ torch.cuda.synchronize()
         result = torch.randn(4, device="cuda")
         self.assertEqual(result.shape, (4,))
 
+        # Capture again on the same stream to verify recovery
         new_graph = torch.cuda.CUDAGraph()
         buf = torch.empty(4, device="cuda")
         with torch.cuda.stream(stream):
@@ -2264,6 +2270,16 @@ torch.cuda.synchronize()
         new_graph.replay()
         torch.cuda.synchronize()
         self.assertFalse(torch.allclose(buf, torch.zeros_like(buf)))
+
+        # Cleanup: verify all allocations are freed
+        del graph, new_graph, buf, x, result
+        torch.cuda.synchronize()
+        gc.collect()
+        torch.cuda.empty_cache()
+        after = torch.cuda.memory_stats()["active.all.current"]
+        self.assertEqual(
+            after, baseline, "Leaked CUDA/RNG allocations after failed capture test"
+        )
 
     @unittest.skipIf(
         not TEST_CUDA_GRAPH, "CUDA >= 11.0 or ROCM >= 5.3 required for graphs"
@@ -2311,9 +2327,89 @@ torch.cuda.synchronize()
     @unittest.skipIf(
         not TEST_CUDA_GRAPH, "CUDA >= 11.0 or ROCM >= 5.3 required for graphs"
     )
+    @unittest.skipIf(
+        TEST_WITH_ROCM, "ROCM does not support nvrtc or external cuda graph events"
+    )
+    @unittest.skipIf(not SM70OrLater, "SM70+ required for inline ptx")
+    def test_graph_rng_replay_record_stream(self):
+        """Verify RNG state tensors survive while a replay is in flight.
+
+        See Note [RNG state tensor lifetime and recordStream] in
+        CUDAGeneratorImpl.cpp.
+        """
+        spin_wait_kernel = get_wait_for_cpu_kernel()
+        flag_cpu = torch.zeros(1, dtype=torch.int32, device="cpu").pin_memory()
+
+        # Clean baseline
+        torch.cuda.synchronize()
+        gc.collect()
+        torch.cuda.empty_cache()
+        baseline = torch.cuda.memory_stats()["active.all.current"]
+        print("baseline:", baseline)
+
+        s = torch.cuda.Stream()
+        g = torch.cuda.CUDAGraph()
+        buf = torch.empty(32, device="cuda")
+
+        with torch.cuda.stream(s):
+            g.capture_begin(capture_error_mode="relaxed")
+            spin_wait_kernel(grid=(1, 1, 1), block=(1, 1, 1), args=[flag_cpu])
+            buf.uniform_()
+            g.capture_end()
+        torch.cuda.current_stream().wait_stream(s)
+
+        # After capture: buf + 2 RNG tensors = 3 new blocks
+        after_capture = torch.cuda.memory_stats()["active.all.current"]
+        self.assertEqual(after_capture - baseline, 3)
+
+        # Reference replay
+        flag_cpu[0] = 1
+        buf.zero_()
+        g.replay()
+        torch.cuda.synchronize()
+
+        # Race: replay with spin held, then delete graph
+        flag_cpu[0] = 0
+        buf.zero_()
+        with torch.cuda.stream(s):
+            g.replay()  # GPU spinning
+
+        g.reset()
+        del g, buf
+
+        # After reset: buf is freed (active decreases by 1).
+        # The 2 RNG tensors should still be active because recordStream
+        # defers their recycling until the replay stream finishes.
+        after_reset = torch.cuda.memory_stats()["active.all.current"]
+        self.assertEqual(
+            after_reset - baseline,
+            2,
+            "Expected 2 RNG state tensors kept alive by recordStream",
+        )
+
+        # Release GPU and clean up
+        flag_cpu[0] = 1
+        torch.cuda.synchronize()
+
+        gc.collect()
+        torch.cuda.empty_cache()
+
+        after_cleanup = torch.cuda.memory_stats()["active.all.current"]
+        self.assertEqual(
+            after_cleanup,
+            baseline,
+            "RNG state tensors should be freed after sync + empty_cache",
+        )
+        print("after cleanup:", after_cleanup)
+
+    @unittest.skipIf(
+        not TEST_CUDA_GRAPH, "CUDA >= 11.0 or ROCM >= 5.3 required for graphs"
+    )
+
     def test_memory_stats_of_multiple_generators_and_graphs(self):
         # Function to clear CUDA cache and collect garbage
         def clear_cuda_cache():
+            torch.cuda.synchronize()
             gc.collect()
             torch.cuda.empty_cache()
 
@@ -2336,6 +2432,7 @@ torch.cuda.synchronize()
             return num_blocks, total_size
 
         def test(num_graphs, num_generators):
+            clear_cuda_cache()
             baseline = get_memory_stats()
             baseline_num_blocks, baseline_total_size = baseline
 
