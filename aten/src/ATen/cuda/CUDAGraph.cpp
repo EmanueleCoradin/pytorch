@@ -24,6 +24,7 @@ static bool _cuda_graphs_debug = false;
 static std::mutex _currently_capturing_graphs_mutex;
 static ska::flat_hash_map<CaptureId_t, CUDAGraph*> _currently_capturing_graphs;
 
+<<<<<<< HEAD
 CUDAGraph* get_graph_from_capture_id(CaptureId_t capture_id) {
   std::lock_guard<std::mutex> lock(_currently_capturing_graphs_mutex);
   auto it = _currently_capturing_graphs.find(capture_id);
@@ -39,6 +40,8 @@ bool is_graph_capture_active() {
 }
 #endif
 
+=======
+>>>>>>> 6c047fef0ea (Revert "[ROCm] Avoid watchdog hipEventQuery during active graph capture (#176251)")
 MempoolId_t graph_pool_handle() {
   // Sets just the second value, to distinguish it from MempoolId_ts created from
   // cudaStreamGetCaptureInfo id_s in capture_begin.
@@ -155,7 +158,7 @@ void CUDAGraph::capture_end() {
   TORCH_CHECK(stream.stream() == capture_stream_.stream(),
               "Capture must end on the same stream it began on.");
 
-  cudaError_t endCaptureErr = cudaStreamEndCapture(capture_stream_, &graph_);
+  AT_CUDA_CHECK(cudaStreamEndCapture(capture_stream_, &graph_));
 
   {
     std::unique_lock<std::mutex> lock(_currently_capturing_graphs_mutex);
@@ -165,9 +168,12 @@ void CUDAGraph::capture_end() {
     _currently_capturing_graphs.erase(capture_id_);
   }
 
+<<<<<<< HEAD
   // End pool allocation before checking the error so captures_underway
   // is cleaned up even if cudaStreamEndCapture failed (e.g. due to an
   // illegal operation during capture).
+=======
+>>>>>>> 6c047fef0ea (Revert "[ROCm] Avoid watchdog hipEventQuery during active graph capture (#176251)")
   c10::cuda::CUDACachingAllocator::endAllocateToPool(capture_dev_, mempool_id_);
   at::getHostAllocator(at::kCUDA)->end_allocate_to_pool(mempool_id_);
 
