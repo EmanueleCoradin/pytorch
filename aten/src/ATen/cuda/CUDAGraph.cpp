@@ -165,10 +165,13 @@ void CUDAGraph::capture_end() {
     _currently_capturing_graphs.erase(capture_id_);
   }
 
-  AT_CUDA_CHECK(endCaptureErr);
-
+  // End pool allocation before checking the error so captures_underway
+  // is cleaned up even if cudaStreamEndCapture failed (e.g. due to an
+  // illegal operation during capture).
   c10::cuda::CUDACachingAllocator::endAllocateToPool(capture_dev_, mempool_id_);
   at::getHostAllocator(at::kCUDA)->end_allocate_to_pool(mempool_id_);
+
+  AT_CUDA_CHECK(endCaptureErr);
 
   TORCH_CHECK(graph_ != nullptr, "Invalid capture.");
 

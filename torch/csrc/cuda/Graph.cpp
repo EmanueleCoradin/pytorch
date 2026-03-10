@@ -123,17 +123,5 @@ void THCPGraph_init(PyObject* module) {
       .def(
           "end_capture_to_conditional_node",
           torch::wrap_pybind_function_no_gil(
-              &::at::cuda::CUDAGraph::end_capture_to_conditional_node))
-      .def("_captured_rng_states", [](::at::cuda::CUDAGraph& self) {
-        auto states = self._captured_rng_states();
-        py::list result;
-        for (auto& [seed, offset] : states) {
-          result.append(py::make_tuple(
-              py::reinterpret_steal<py::object>(
-                  THPVariable_Wrap(std::move(seed))),
-              py::reinterpret_steal<py::object>(
-                  THPVariable_Wrap(std::move(offset)))));
-        }
-        return result;
-      });
+              &::at::cuda::CUDAGraph::end_capture_to_conditional_node));
 }
