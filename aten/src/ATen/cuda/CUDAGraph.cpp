@@ -25,6 +25,7 @@ static std::mutex _currently_capturing_graphs_mutex;
 static ska::flat_hash_map<CaptureId_t, CUDAGraph*> _currently_capturing_graphs;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 CUDAGraph* get_graph_from_capture_id(CaptureId_t capture_id) {
   std::lock_guard<std::mutex> lock(_currently_capturing_graphs_mutex);
   auto it = _currently_capturing_graphs.find(capture_id);
@@ -34,14 +35,26 @@ CUDAGraph* get_graph_from_capture_id(CaptureId_t capture_id) {
   return nullptr;
 }
 #if defined(USE_ROCM)
+=======
+
+#if defined(USE_ROCM)
+// Returns true when at least one CUDAGraph capture is currently active in this
+// process. Uses the same mutex-protected capture map as capture lifecycle
+// bookkeeping.
+>>>>>>> 5ae3a6ff8f6 ([ROCm] Avoid watchdog event queries during graph capture (#176251))
 bool is_graph_capture_active() {
   std::unique_lock<std::mutex> lock(_currently_capturing_graphs_mutex);
   return !_currently_capturing_graphs.empty();
 }
+<<<<<<< HEAD
 #endif
 
 =======
 >>>>>>> 6c047fef0ea (Revert "[ROCm] Avoid watchdog hipEventQuery during active graph capture (#176251)")
+=======
+#endif // defined(USE_ROCM)
+
+>>>>>>> 5ae3a6ff8f6 ([ROCm] Avoid watchdog event queries during graph capture (#176251))
 MempoolId_t graph_pool_handle() {
   // Sets just the second value, to distinguish it from MempoolId_ts created from
   // cudaStreamGetCaptureInfo id_s in capture_begin.
@@ -158,8 +171,10 @@ void CUDAGraph::capture_end() {
   TORCH_CHECK(stream.stream() == capture_stream_.stream(),
               "Capture must end on the same stream it began on.");
 
-  AT_CUDA_CHECK(cudaStreamEndCapture(capture_stream_, &graph_));
-
+  // Capture is over once cudaStreamEndCapture returns (success or failure).
+  // Clear bookkeeping before propagating the return status so watchdog-side
+  // checks cannot observe stale "capture active" state on error paths.
+  cudaError_t endCaptureErr = cudaStreamEndCapture(capture_stream_, &graph_);
   {
     std::unique_lock<std::mutex> lock(_currently_capturing_graphs_mutex);
     TORCH_CHECK(
@@ -167,6 +182,7 @@ void CUDAGraph::capture_end() {
         "capture_end() called before capture_begin().");
     _currently_capturing_graphs.erase(capture_id_);
   }
+  AT_CUDA_CHECK(endCaptureErr);
 
 <<<<<<< HEAD
   // End pool allocation before checking the error so captures_underway
