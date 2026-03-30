@@ -617,10 +617,10 @@ For each combination of cuBLAS handle and CUDA stream, a cuBLAS workspace will b
 if that handle and stream combination executes a cuBLAS kernel that requires a workspace.
 In order to avoid repeatedly allocating workspaces, these workspaces are not deallocated unless
 ``torch._C._cuda_clearCublasWorkspaces()`` is called. The workspace size per allocation can be
-specified via the environment variable ``CUBLAS_WORKSPACE_CONFIG`` with the format ``:[SIZE]:[COUNT]``.
-As an example, the default workspace size per allocation is ``CUBLAS_WORKSPACE_CONFIG=:4096:2:16:8``
+specified via the environment variable ``TORCH_CUBLAS_WORKSPACE_CONFIG`` with the format ``:[SIZE]:[COUNT]``.
+As an example, the default workspace size per allocation is ``TORCH_CUBLAS_WORKSPACE_CONFIG=:4096:2:16:8``
 which specifies a total size of ``2 * 4096 + 8 * 16 KiB``. To force cuBLAS to avoid using workspaces,
-set ``CUBLAS_WORKSPACE_CONFIG=:0:0``.
+set ``TORCH_CUBLAS_WORKSPACE_CONFIG=:0:0``.
 
 .. _cufft-plan-cache:
 

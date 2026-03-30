@@ -54,7 +54,7 @@ def convert_conv2d_weight_memory_format(module, memory_format):
 
     Example:
         >>> # xdoctest: +REQUIRES(env:TORCH_DOCTEST_CUDA)
-        >>> # xdoctest: +REQUIRES(env:CUBLAS_WORKSPACE_CONFIG)
+        >>> # xdoctest: +REQUIRES(env:TORCH_CUBLAS_WORKSPACE_CONFIG)
         >>> input = torch.randint(1, 10, (2, 8, 4, 4), dtype=torch.float16, device="cuda")
         >>> model = nn.Sequential(
         >>>     nn.Conv2d(8, 4, 3)).cuda().half()
@@ -128,7 +128,7 @@ def convert_conv3d_weight_memory_format(module, memory_format):
 
     Example:
         >>> # xdoctest: +REQUIRES(env:TORCH_DOCTEST_CUDA)
-        >>> # xdoctest: +REQUIRES(env:CUBLAS_WORKSPACE_CONFIG)
+        >>> # xdoctest: +REQUIRES(env:TORCH_CUBLAS_WORKSPACE_CONFIG)
         >>> input = torch.randint(1, 10, (2, 8, 4, 4, 4), dtype=torch.float16, device="cuda")
         >>> model = nn.Sequential(
         >>>     nn.Conv3d(8, 4, 3)).cuda().half()

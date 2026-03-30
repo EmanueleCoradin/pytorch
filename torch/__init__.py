@@ -1382,8 +1382,8 @@ def use_deterministic_algorithms(
     See the documentation for that attribute for more information.
 
     A handful of CUDA operations are nondeterministic if the CUDA version is
-    10.2 or greater, unless the environment variable ``CUBLAS_WORKSPACE_CONFIG=:4096:8``
-    or ``CUBLAS_WORKSPACE_CONFIG=:16:8`` is set. See the CUDA documentation for more
+    10.2 or greater, unless the environment variable ``TORCH_CUBLAS_WORKSPACE_CONFIG=:4096:8``
+    or ``TORCH_CUBLAS_WORKSPACE_CONFIG=:16:8`` is set. See the CUDA documentation for more
     details: `<https://docs.nvidia.com/cuda/cublas/index.html#results-reproducibility>`_
     If one of these environment variable configurations is not set, a :class:`RuntimeError`
     will be raised from these operations when called with CUDA tensors:

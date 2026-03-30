@@ -41,14 +41,14 @@ For more information on CUDA runtime environment variables, see `CUDA Environmen
     - Comma-separated list of GPU device IDs that should be made available to CUDA runtime. If set to ``-1``, no GPUs are made available.
   * - ``CUDA_LAUNCH_BLOCKING``
     - If set to ``1``, makes CUDA calls synchronous. This can be useful for debugging.
-  * - ``CUBLAS_WORKSPACE_CONFIG``
+  * - ``TORCH_CUBLAS_WORKSPACE_CONFIG``
     - This environment variable is used to set the workspace configuration for cuBLAS per allocation. The format is ``:[SIZE]:[COUNT]``.
-      As an example, the default workspace size per allocation is ``CUBLAS_WORKSPACE_CONFIG=:4096:2:16:8`` which specifies a total size of ``2 * 4096 + 8 * 16 KiB``.
-      To force cuBLAS to avoid using workspaces, set ``CUBLAS_WORKSPACE_CONFIG=:0:0``.
+      As an example, the default workspace size per allocation is ``TORCH_CUBLAS_WORKSPACE_CONFIG=:4096:2:16:8`` which specifies a total size of ``2 * 4096 + 8 * 16 KiB``.
+      To force cuBLAS to avoid using workspaces, set ``TORCH_CUBLAS_WORKSPACE_CONFIG=:0:0``.
   * - ``CUDNN_CONV_WSCAP_DBG``
-    - Similar to ``CUBLAS_WORKSPACE_CONFIG``, this environment variable is used to set the workspace configuration for cuDNN per allocation.
+    - Similar to ``TORCH_CUBLAS_WORKSPACE_CONFIG``, this environment variable is used to set the workspace configuration for cuDNN per allocation.
   * - ``CUBLASLT_WORKSPACE_SIZE``
-    - Similar to ``CUBLAS_WORKSPACE_CONFIG``, this environment variable is used to set the workspace size for cuBLASLT.
+    - Similar to ``TORCH_CUBLAS_WORKSPACE_CONFIG``, this environment variable is used to set the workspace size for cuBLASLT.
   * - ``CUDNN_ERRATA_JSON_FILE``
     - Can be set to a file path for an errata filter that can be passed to cuDNN to avoid specific engine configs, used primarily for debugging or to hardcode autotuning.
   * - ``NVIDIA_TF32_OVERRIDE``

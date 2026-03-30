@@ -17,8 +17,8 @@ logger: logging.Logger = logging.getLogger(__name__)
 
 MAIN_RANDOM_SEED = 1337
 
-# Set the CUBLAS_WORKSPACE_CONFIG environment variable
-os.environ["CUBLAS_WORKSPACE_CONFIG"] = ":4096:8"
+# Set the TORCH_CUBLAS_WORKSPACE_CONFIG environment variable
+os.environ["TORCH_CUBLAS_WORKSPACE_CONFIG"] = ":4096:8"
 
 
 # If the two forward functions involve any non-deterministic operations,

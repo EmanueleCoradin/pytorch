@@ -120,7 +120,7 @@ HIP. The workspace size per allocation can be specified via the environment vari
 variable ``HIPBLAS_WORKSPACE_CONFIG=:4096:2:16:8`` specifies a total size of ``2 * 4096 + 8 * 16
 KiB`` or 8 MIB. The default workspace size is 32 MiB; MI300 and newer defaults to 128 MiB. To force
 hipBLAS to avoid using workspaces, set ``HIPBLAS_WORKSPACE_CONFIG=:0:0``. For convenience,
-``CUBLAS_WORKSPACE_CONFIG`` is also accepted.
+``TORCH_CUBLAS_WORKSPACE_CONFIG`` is also accepted.
 
 .. _hipfft-plan-cache:
 

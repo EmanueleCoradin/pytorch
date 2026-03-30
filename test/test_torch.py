@@ -1213,7 +1213,7 @@ class TestTorchDeviceType(TestCase):
             (':4096:8', True),
             (':16:8', True)]
 
-        cublas_var_name = 'CUBLAS_WORKSPACE_CONFIG'
+        cublas_var_name = 'TORCH_CUBLAS_WORKSPACE_CONFIG'
         is_cuda10_2_or_higher = (
             (torch.version.cuda is not None)
             and ([int(x) for x in torch.version.cuda.split(".")] >= [10, 2]))

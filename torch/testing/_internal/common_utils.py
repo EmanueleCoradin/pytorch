@@ -2053,13 +2053,13 @@ class SwapTensorsGuard:
 # restore the previous deterministic flag setting.
 #
 # If CUDA >= 10.2, this will set the environment variable
-# CUBLAS_WORKSPACE_CONFIG=:4096:8 so that the error associated with that
+# TORCH_CUBLAS_WORKSPACE_CONFIG=:4096:8 so that the error associated with that
 # setting is not thrown during the test unless the test changes that variable
-# on purpose. The previous CUBLAS_WORKSPACE_CONFIG setting will also be
+# on purpose. The previous TORCH_CUBLAS_WORKSPACE_CONFIG setting will also be
 # restored once the test is finished.
 #
 # Note that if a test requires CUDA to actually register the changed
-# CUBLAS_WORKSPACE_CONFIG variable, a new subprocess must be created, because
+# TORCH_CUBLAS_WORKSPACE_CONFIG variable, a new subprocess must be created, because
 # CUDA only checks the variable when the runtime initializes. Tests can be
 # run inside a subprocess like so:
 #
@@ -2084,7 +2084,7 @@ def wrapDeterministicFlagAPITest(fn):
                 torch.are_deterministic_algorithms_enabled(),
                 warn_only=torch.is_deterministic_algorithms_warn_only_enabled()):
             class CuBLASConfigGuard:
-                cublas_var_name = 'CUBLAS_WORKSPACE_CONFIG'
+                cublas_var_name = 'TORCH_CUBLAS_WORKSPACE_CONFIG'
 
                 def __enter__(self):
                     self.is_cuda10_2_or_higher = (

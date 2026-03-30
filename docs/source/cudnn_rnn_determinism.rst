@@ -7,9 +7,9 @@
 
     On CUDA 10.2 or later, set environment variable
     (note the leading colon symbol)
-    ``CUBLAS_WORKSPACE_CONFIG=:16:8``
+    ``TORCH_CUBLAS_WORKSPACE_CONFIG=:16:8``
     or
-    ``CUBLAS_WORKSPACE_CONFIG=:4096:2``.
+    ``TORCH_CUBLAS_WORKSPACE_CONFIG=:4096:2``.
 
     See the `cuDNN 8 Release Notes`_ for more information.
 

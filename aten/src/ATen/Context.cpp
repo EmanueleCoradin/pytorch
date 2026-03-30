@@ -184,7 +184,7 @@ bool Context::userEnabledOverrideableSDP() const {
   return enabled_overrideable;
 }
 
-static constexpr const auto cublas_config_var_name = "CUBLAS_WORKSPACE_CONFIG";
+static constexpr const auto cublas_config_var_name = "TORCH_CUBLAS_WORKSPACE_CONFIG";
 static constexpr const std::array<const char*, 2> cublas_deterministic_configs = {":4096:8", ":16:8"};
 
 bool Context::checkCuBLASConfigDeterministic() {

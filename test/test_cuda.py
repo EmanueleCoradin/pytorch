@@ -469,15 +469,15 @@ class TestCuda(TestCase):
             return finish - start
 
         # check default
-        os.environ["CUBLAS_WORKSPACE_CONFIG"] = ""
+        os.environ["TORCH_CUBLAS_WORKSPACE_CONFIG"] = ""
         self.assertTrue(abs(check_workspace_size(a) - default_workspace_size) < 524288)
 
         # check default with bad user config
-        os.environ["CUBLAS_WORKSPACE_CONFIG"] = "-1"
+        os.environ["TORCH_CUBLAS_WORKSPACE_CONFIG"] = "-1"
         self.assertTrue(abs(check_workspace_size(a) - default_workspace_size) < 524288)
 
         # check valid config
-        os.environ["CUBLAS_WORKSPACE_CONFIG"] = ":128:8:64:16:32:32"
+        os.environ["TORCH_CUBLAS_WORKSPACE_CONFIG"] = ":128:8:64:16:32:32"
         self.assertTrue(abs(check_workspace_size(a) - (3072 * 1024)) < 524288)
 
         torch._C._cuda_clearCublasWorkspaces()
